@@ -34,7 +34,7 @@ namespace WebApiExtensions.Services
             });
         }
 
-        public static Task CompletedTask = Task.Delay(0);
+        internal static Task CompletedTask { get; } = Task.Delay(0);
         public static Task Run(Func<Task> action,
             HttpRequestMessage request = null,
             [CallerFilePath] string file = "",
