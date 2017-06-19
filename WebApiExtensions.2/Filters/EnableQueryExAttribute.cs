@@ -21,6 +21,7 @@ namespace WebApiExtensions.Filters
             return actionDescriptor.Properties.GetOrAdd(ModelKeyPrefix + elementClrType.FullName, _ =>
             {
                 var builder = new ODataConventionModelBuilder(actionDescriptor.Configuration, true);
+                builder.EnableLowerCamelCase();
                 foreach (var type in KnownComplexTypes)
                     builder.AddComplexType(type);
                 var config = builder.AddEntityType(elementClrType);
