@@ -15,13 +15,15 @@ namespace WebApiExtensions.Filters
         private const string ModelKeyPrefix = "MS_EdmModel";
         public static readonly List<Type> KnownComplexTypes = new List<Type>();
         public static string CountHeader = "X-Count";
+        public static bool EnableLowerCamelCase;
 
         public override IEdmModel GetModel(Type elementClrType, HttpRequestMessage request, HttpActionDescriptor actionDescriptor)
         {
             return actionDescriptor.Properties.GetOrAdd(ModelKeyPrefix + elementClrType.FullName, _ =>
             {
                 var builder = new ODataConventionModelBuilder(actionDescriptor.Configuration, true);
-                builder.EnableLowerCamelCase();
+                if (EnableLowerCamelCase)
+                    builder.EnableLowerCamelCase();
                 foreach (var type in KnownComplexTypes)
                     builder.AddComplexType(type);
                 var config = builder.AddEntityType(elementClrType);
