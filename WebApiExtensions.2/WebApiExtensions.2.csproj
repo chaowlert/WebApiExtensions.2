@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DryIoc, Version=2.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\IndustrialNext\api\packages\DryIoc.dll.2.10.0\lib\net45\DryIoc.dll</HintPath>
+    </Reference>
+    <Reference Include="DryIoc.WebApi, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\IndustrialNext\api\packages\DryIoc.WebApi.dll.2.2.0\lib\net45\DryIoc.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\..\IndustrialNext\api\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -112,6 +118,7 @@
     <Compile Include="Filters\HandleEntityExceptionAttribute.cs" />
     <Compile Include="Filters\HandleStorageExceptionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ApiControllerExtensions.cs" />
     <Compile Include="Services\HttpRequestMessageExtensions.cs" />
     <Compile Include="Services\ImageHelper.cs" />
     <Compile Include="Services\NLogExceptionLogger.cs" />
