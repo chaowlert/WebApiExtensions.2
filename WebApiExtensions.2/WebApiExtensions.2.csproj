@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebApiExtensions</RootNamespace>
     <AssemblyName>WebApiExtensions.2</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -99,6 +99,7 @@
     <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\IndustrialNext\api\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\IndustrialNext\api\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
@@ -117,6 +118,7 @@
     <Compile Include="Filters\EnableQueryExAttribute.cs" />
     <Compile Include="Filters\HandleEntityExceptionAttribute.cs" />
     <Compile Include="Filters\HandleStorageExceptionAttribute.cs" />
+    <Compile Include="Handlers\JsonBatchHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApiControllerExtensions.cs" />
     <Compile Include="Services\HttpRequestMessageExtensions.cs" />
@@ -129,6 +131,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\EF6.Extensions\EF6.Extensions\EF6.Extensions.csproj">
+      <Project>{C0C3DC4A-DACB-4B4C-84DE-3A71135B2FB7}</Project>
+      <Name>EF6.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\JsonNet.Extensions\JsonNet.Extensions\JsonNet.Extensions.csproj">
+      <Project>{AE4DDD98-FDE8-4330-A038-A3089516BE29}</Project>
+      <Name>JsonNet.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\WebApiExtensions\WebApiExtensions\WebApiExtensions.csproj">
       <Project>{83bf1f7e-5035-4bf3-8d04-7d9e951e222b}</Project>
       <Name>WebApiExtensions</Name>
