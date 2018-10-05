@@ -57,7 +57,19 @@ namespace WebApiExtensions.Handlers
         {
             ValidateRequest(request);
 
-            var jsonRequests = await SplitRequests(request);
+            IList<JsonRequestMessage> jsonRequests;
+
+            try
+            {
+                jsonRequests = await SplitRequests(request);
+            }
+            catch
+            {
+                throw new HttpResponseException(request.CreateErrorResponse(
+                    HttpStatusCode.BadRequest,
+                    "Content is invalid"));
+            }
+
             var requests = new List<HttpRequestMessage>();
             var responses = new List<HttpResponseMessage>();
             var jsonResponses = new JArray();
@@ -131,8 +143,11 @@ namespace WebApiExtensions.Handlers
                 rm.Headers.Add(item.Key, item.Value);
             }
 
-            var data = ReplaceJsonPath(jsonRequest.data, jsonResponse);
-            rm.Content = new StringContent(data, Encoding.UTF8, "application/json");
+            if (jsonRequest.data != null)
+            {
+                var data = ReplaceJsonPath(jsonRequest.data, jsonResponse);
+                rm.Content = new StringContent(data, Encoding.UTF8, "application/json");
+            }
 
             rm.CopyBatchRequestProperties(request);
 
